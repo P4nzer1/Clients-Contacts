@@ -1,0 +1,17 @@
+{% extends 'clients/base.html' %}
+{% block title %}Детали клиента{% endblock %}
+{% block content %}
+<h1>{{ client.name }}</h1>
+<ul class="list-group">
+    <li class="list-group-item"><strong>Email:</strong> {{ client.email }}</li>
+    <li class="list-group-item"><strong>Телефон:</strong> {{ client.phone }}</li>
+    {% if client.company %}
+    <li class="list-group-item"><strong>Компания:</strong> {{ client.company }}</li>
+    {% endif %}
+    <li class="list-group-item"><strong>Создан:</strong> {{ client.created_at|date:"d M Y H:i" }}</li>
+</ul>
+<div class="mt-3">
+    <a href="{% url 'client-edit' client.pk %}" class="btn btn-warning">Редактировать</a>
+    <a href="{% url 'client-delete' client.pk %}" class="btn btn-danger">Удалить</a>
+</div>
+{% endblock %}
